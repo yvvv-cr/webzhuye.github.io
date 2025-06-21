@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的作品</title>
+    <!-- Bootstrap 网格系统 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap-grid.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .nav-link {
+                @apply px-4 py-2 rounded-md transition-colors duration-300;
+            }
+            .nav-link:hover {
+                @apply bg-primary/10 text-primary;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="row justify-between items-center">
+                <div class="col-auto">
+                    <h1 class="text-2xl font-bold text-primary">
+                        <i class="fa fa-user-circle mr-2"></i>个人主页
+                    </h1>
+                </div>
+                <div class="col-auto hidden md:block">
+                    <nav>
+                        <ul class="flex space-x-2">
+                            <li><a href="index.html" class="nav-link font-medium">主页</a></li>
+                            <li><a href="works.html" class="nav-link font-medium text-primary">作品</a></li>
+                            <li><a href="login.html" class="nav-link font-medium">登录</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-auto md:hidden">
+                    <button class="text-dark hover:text-primary">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="row">
+            <div class="col-12 mb-8">
+                <h2 class="text-3xl font-bold mb-2">我的作品</h2>
+                <p class="text-gray-600">这里展示了我在学习Web前端开发过程中完成的一些项目</p>
+            </div>
+        </div>
+
+        <!-- 作品网格 -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-6">
+            <!-- 作品卡片1 -->
+            <div class="col">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full flex flex-col">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/237/600/400" alt="响应式个人博客" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">
+                            网页设计
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">响应式个人博客</h3>
+                        <p class="text-gray-600">
+                            基于HTML、CSS和JavaScript开发的个人博客网站，采用响应式设计，适配各种设备屏幕尺寸。
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <div class="flex justify-between items-center">
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">HTML5</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">CSS3</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">JavaScript</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品卡片2 -->
+            <div class="col">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full flex flex-col">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/96/600/400" alt="电商产品展示页面" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded">
+                            前端开发
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">电商产品展示页面</h3>
+                        <p class="text-gray-600">
+                            模仿电商网站的产品展示页面，实现了产品列表、详情、筛选和购物车等功能。
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <div class="flex justify-between items-center">
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">HTML5</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">CSS3</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">JavaScript</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">Bootstrap</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品卡片3 -->
+            <div class="col">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full flex flex-col">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/180/600/400" alt="动态数据可视化" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">
+                            交互设计
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">动态数据可视化</h3>
+                        <p class="text-gray-600">
+                            使用Chart.js实现的动态数据可视化页面，展示了不同类型的数据图表和交互效果。
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <div class="flex justify-between items-center">
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">HTML5</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">CSS3</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">JavaScript</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">Chart.js</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品卡片4 -->
+            <div class="col">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full flex flex-col">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/160/600/400" alt="JavaScript游戏开发" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded">
+                            互动游戏
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">JavaScript游戏开发</h3>
+                        <p class="text-gray-600">
+                            使用纯JavaScript开发的简单小游戏，实现了基本的游戏逻辑和用户交互。
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <div class="flex justify-between items-center">
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">HTML5</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">CSS3</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">JavaScript</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">Canvas</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品卡片5 -->
+            <div class="col">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full flex flex-col">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/26/600/400" alt="响应式企业官网" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">
+                            网站设计
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">响应式企业官网</h3>
+                        <p class="text-gray-600">
+                            为虚构企业设计的官方网站，包含公司介绍、产品展示、新闻动态和联系我们等模块。
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <div class="flex justify-between items-center">
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">HTML5</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">CSS3</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">JavaScript</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">Tailwind</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品卡片6 -->
+            <div class="col">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full flex flex-col">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/20/600/400" alt="单页应用原型" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded">
+                            前端框架
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">单页应用原型</h3>
+                        <p class="text-gray-600">
+                            使用原生JavaScript实现的单页应用原型，包含路由切换、组件化和状态管理等功能。
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <div class="flex justify-between items-center">
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">HTML5</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">CSS3</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">JavaScript</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs">SPA</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                                查看详情 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="row justify-center text-center">
+                <div class="col-lg-6">
+                    <h3 class="text-xl font-bold mb-4">联系我</h3>
+                    <p class="mb-4">邮箱：yucunru@outlook.com</p>
+                    <div class="flex justify-center space-x-4 mb-6">
+                        <a href="#" class="text-white hover:text-primary transition-colors"><i class="fa fa-github text-2xl"></i></a>
+                        <a href="#" class="text-white hover:text-primary transition-colors"><i class="fa fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="text-white hover:text-primary transition-colors"><i class="fa fa-weixin text-2xl"></i></a>
+                        <a href="#" class="text-white hover:text-primary transition-colors"><i class="fa fa-envelope text-2xl"></i></a>
+                    </div>
+                    <p class="text-gray-400 text-sm">© 2025 于存儒 - 个人主页 | 学号：2023417119</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-sm');
+            }
+        });
+
+        // 作品卡片动画效果
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('img').style.transform = 'scale(1.05)';
+                this.querySelector('img').style.transition = 'transform 0.5s ease';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('img').style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
