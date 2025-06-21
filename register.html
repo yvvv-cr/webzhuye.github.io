@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <!-- Bootstrap 网格系统 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap-grid.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .nav-link {
+                @apply px-4 py-2 rounded-md transition-colors duration-300;
+            }
+            .nav-link:hover {
+                @apply bg-primary/10 text-primary;
+            }
+            .form-input {
+                @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300;
+                /* 增加 padding-left 的值，确保输入文本不会被图标覆盖 */
+                padding-left: 3.5rem; 
+            }
+            .btn-primary {
+                @apply w-full bg-primary text-white px-6 py-3 rounded-lg shadow-md hover:bg-primary/90 transition-all duration-300;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="row justify-between items-center">
+                <div class="col-auto">
+                    <h1 class="text-2xl font-bold text-primary">
+                        <i class="fa fa-user-circle mr-2"></i>个人主页
+                    </h1>
+                </div>
+                <div class="col-auto hidden md:block">
+                    <nav>
+                        <ul class="flex space-x-2">
+                            <li><a href="index.html" class="nav-link font-medium">主页</a></li>
+                            <li><a href="works.html" class="nav-link font-medium">作品</a></li>
+                            <li><a href="login.html" class="nav-link font-medium text-primary">登录</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-auto md:hidden">
+                    <button class="text-dark hover:text-primary">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="container mx-auto">
+            <div class="row justify-center">
+                <div class="col-lg-5 col-md-7 col-sm-10">
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="bg-gradient-to-r from-primary to-secondary p-8 text-white">
+                            <h2 class="text-3xl font-bold mb-2">欢迎注册</h2>
+                            <p class="text-white/80">请填写以下信息注册您的账户</p>
+                        </div>
+                        <div class="p-8">
+                            <form id="registerForm">
+                                <div class="mb-6">
+                                    <label for="username" class="block text-gray-700 font-medium mb-2">用户名</label>
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" id="username" name="username" class="form-input" placeholder="请输入您的用户名" required>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="registerEmail" class="block text-gray-700 font-medium mb-2">邮箱</label>
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                        <input type="email" id="registerEmail" name="email" class="form-input" placeholder="请输入您的邮箱" required>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="registerPassword" class="block text-gray-700 font-medium mb-2">密码</label>
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                        <input type="password" id="registerPassword" name="password" class="form-input" placeholder="请输入您的密码" required>
+                                        <button type="button" id="toggleRegisterPassword" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">
+                                            <i class="fa fa-eye-slash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="confirmPassword" class="block text-gray-700 font-medium mb-2">确认密码</label>
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="请再次输入您的密码" required>
+                                        <button type="button" id="toggleConfirmPassword" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">
+                                            <i class="fa fa-eye-slash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-primary">注册</button>
+                            </form>
+                            <div class="mt-6 text-center text-gray-700">
+                                已有账户? <a href="login.html" class="text-primary hover:text-primary/80">立即登录</a>
+                            </div>
+                            <div class="mt-6 flex justify-center space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-[#07C160]/10 flex items-center justify-center text-[#07C160] hover:bg-[#07C160]/20 transition-colors duration-300">
+                                    <i class="fa fa-weixin text-xl"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-[#1DA1F2]/10 flex items-center justify-center text-[#1DA1F2] hover:bg-[#1DA1F2]/20 transition-colors duration-300">
+                                    <i class="fa fa-twitter text-xl"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-[#4267B2]/10 flex items-center justify-center text-[#4267B2] hover:bg-[#4267B2]/20 transition-colors duration-300">
+                                    <i class="fa fa-facebook text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="row justify-center text-center">
+                <div class="col-lg-6">
+                    <p class="text-gray-400 text-sm">© 2025 于存儒 - 个人主页 | 学号：2022417119</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-sm');
+            }
+        });
+
+        // 密码显示/隐藏切换
+        const toggleRegisterPassword = document.getElementById('toggleRegisterPassword');
+        const registerPasswordInput = document.getElementById('registerPassword');
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+
+        toggleRegisterPassword.addEventListener('click', function () {
+            const type = registerPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            registerPasswordInput.setAttribute('type', type);
+
+            // 切换图标
+            if (type === 'text') {
+                toggleRegisterPassword.innerHTML = '<i class="fa fa-eye"></i>';
+            } else {
+                toggleRegisterPassword.innerHTML = '<i class="fa fa-eye-slash"></i>';
+            }
+        });
+
+        toggleConfirmPassword.addEventListener('click', function () {
+            const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPasswordInput.setAttribute('type', type);
+
+            // 切换图标
+            if (type === 'text') {
+                toggleConfirmPassword.innerHTML = '<i class="fa fa-eye"></i>';
+            } else {
+                toggleConfirmPassword.innerHTML = '<i class="fa fa-eye-slash"></i>';
+            }
+        });
+
+        // 表单提交处理
+        const registerForm = document.getElementById('registerForm');
+
+        registerForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            // 这里可以添加表单提交逻辑
+            console.log('注册表单已提交');
+        });
+    </script>
+</body>
+</html>
